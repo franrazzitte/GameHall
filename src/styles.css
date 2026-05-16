@@ -23,8 +23,11 @@ body {
   font-size: 0.95rem;
 }
 
-.loginForm {
-  min-width: 500px;
+@media screen and (min-width: 600px) {
+  .responsive-element.mobile,
+  .responsive-element .mobile {
+      display: none !important;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -32,10 +35,8 @@ body {
     margin: 0 !important;
     padding: 20px !important;
   }
-  
-  .loginForm {
-    min-width: 100%;
-    width: 100%;
-    margin: 10px !important;
+  .responsive-element.desktop,
+  .responsive-element .desktop {
+    display: none !important;  
   }
 }
