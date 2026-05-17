@@ -1,0 +1,20 @@
+export interface GitHubUser {
+  image: string;
+  name: string;
+  username: string;
+  bio: string;
+  url: string;
+}
+
+export interface User {
+    id: string;
+    email: string;
+    username: string;
+    role?: string;
+}
+
+export interface Game {
+    title: string;
+    image: string;
+    link: string;
+}

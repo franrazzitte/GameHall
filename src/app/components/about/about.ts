@@ -1,14 +1,7 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-
-interface GitHubUser {
-  image: string;
-  name: string;
-  username: string;
-  bio: string;
-  url: string;
-}
+import { GitHubUser } from '../../models/models';
 
 @Component({
   selector: 'app-about',
