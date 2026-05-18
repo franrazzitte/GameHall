@@ -10,7 +10,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             @if (auth.isAuthenticated()) {
-                                <a type="button" class="btn btn-sm btn-outline-secondary disabled" [href]="game.link">Próximamente</a>
+                                <a type="button" class="btn btn-sm btn-outline-secondary" [href]="game.link">Jugar</a>
                             } @else {
                                 <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalHome" id="modalHomeBtn">Jugar</button>    
                             }

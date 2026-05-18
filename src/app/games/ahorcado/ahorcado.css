@@ -1,0 +1,11 @@
+.letter {
+    display: flex;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 50px;
+    border-width: 0;
+    border-bottom-width: 3px;
+    border-color: white;
+    border-style: solid;
+    margin-right: .5rem;
+}

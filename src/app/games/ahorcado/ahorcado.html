@@ -1,0 +1,18 @@
+<div class="responsive-element desktop pb-5"></div>
+<div class="row align-items-end justify-content-center p-2">
+    <div class="col-lg-4">
+        <img [src]="'img/ahorcado/hangman-'+lifes+'.png'" class="w-100" alt="0">
+    </div>
+    <div class="col-lg-7">
+        <div class="d-flex justify-content-center align-items-end mb-3 mt-5" style="min-height: 55px;">
+            @for (letter of word; track letter) {
+                <div class="letter me-2">
+                    <h1 class="m-0">
+                        @if (!isPlaying || usedLetters.includes(letter)) {{{ letter }}} 
+                    </h1>
+                </div>
+            }
+        </div>
+        <app-keyboard [letterCondition]="letterCondition" (letterPressed)="onLetterPressed($event)"></app-keyboard>
+    </div>
+</div>

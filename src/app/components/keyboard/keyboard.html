@@ -1,0 +1,16 @@
+@for (row of keyboard; track row) {
+    <div class="d-flex justify-content-center gap-1 mb-1">
+        @for (letter of row; track letter) {
+            <button
+                [class]="'d-flex align-items-center justify-content-center rounded border-0 lh-1 letter ' + (letterCondition.get(letter) || '') +' '+ (letterCondition.get('all') || '')"
+                [disabled]="letterCondition.has(letter) || letterCondition.get('all')"
+                (click)="press(letter)">
+                @if (letter.includes('bi')) {
+                    <i class="fs-4 bi {{ letter }}"></i>
+                } @else {
+                    {{ letter }}
+                }
+            </button>
+        }    
+    </div>
+}
