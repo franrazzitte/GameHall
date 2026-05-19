@@ -1,0 +1,6 @@
+@media screen and (max-width: 600px) {
+    .img-github-user {
+        width: 100px;
+        height: 100px;
+    }    
+}
