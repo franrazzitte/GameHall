@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-center align-items-center bodyPage m-5" style="flex-direction: column;">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="card border rounded-5 p-5 loginForm">
+        <div class="mb-3">
+            <label class="form-label fw-bold">Correo electrónico</label>
+            <input type="email" class="form-control"
+                [(ngModel)] = "email" name="email"
+                required email
+                #emailField = "ngModel">
+            @if (emailField.invalid && emailField.touched){
+                <div class="text-danger small mt-1 me-1">
+                    <i class="bi bi-exclamation-octagon-fill"></i>
+                    Introduce un correo válido
+                </div>
+            }
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">Contraseña</label>
+            <input type="password" class="form-control"
+                [(ngModel)] = "password" name="password"
+                required
+                #passField = "ngModel">
+            @if (passField.invalid && passField.touched){
+                <div class="text-danger small mt-1 me-1">
+                    <i class="bi bi-exclamation-octagon-fill"></i>
+                    Campo obligatorio
+                </div>
+            }
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+            Iniciar sesión
+        </button>
+        <hr>
+        <p>¿Aún no tenés una cuenta? <a href="signup">Crea una aquí</a></p>
+    </form>
+</div>
