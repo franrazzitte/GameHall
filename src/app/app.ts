@@ -8,6 +8,4 @@ import { RouterOutlet, RouterLink } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('gamehub');
-}
+export class App {}
