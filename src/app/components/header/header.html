@@ -4,16 +4,33 @@
             <a class="d-flex justify-content-center align-items-center text-decoration-none mobile" href="/">
                 <img src="logo.png" alt="Logo" class="rounded-circle" width="70px" height="70px" style="object-fit: cover;">
             </a>
-            <div class="btn-group mobile">
-                <a href="/login" class="btn btn-sm btn-outline-secondary">Iniciar Sesión</a>
-                <a href="/signup" class="btn btn-sm btn-outline-primary">Registrarse</a>
-            </div>
+            @if (auth.user()) {
+                <div class="dropdown mobile">
+                    <button class="btn btn-outline-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-fill me-2"></i>
+                        Mi Perfil
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item disabled text-white">{{auth.username()}}</a></li>
+                        <li><a class="dropdown-item disabled text-white">{{auth.userEmail()}}</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button class="dropdown-item text-danger" (click)="auth.logout()">Cerrar Sesión</button></li>
+                    </ul>
+                </div>
+            } @else {
+                <div class="btn-group mobile">
+                    <a href="/login" class="btn btn-sm btn-outline-secondary">Iniciar Sesión</a>
+                    <a href="/signup" class="btn btn-sm btn-outline-primary">Registrarse</a>
+                </div>    
+            }
         </div>
         <hr class="mobile">
         <ul class="nav col-12 col-lg-auto mb-2 justify-content-start mb-md-0">
             <li><a href="/#games" class="nav-link px-2 text-white">Juegos</a></li>
-            <li><a href="/chat" class="nav-link px-2 text-white d-none">Chat</a></li>
-            <li><a href="/chat" class="nav-link px-2 text-white d-none">Resultados</a></li>
+            @if (auth.user()) {
+                <li><a href="/chat" class="nav-link px-2 text-white">Chat</a></li>
+                <li><a href="/chat" class="nav-link px-2 text-white">Resultados</a></li>    
+            }
             <li><a href="/about" class="nav-link px-2 text-white">¿Quién Soy?</a></li>
         </ul>
         <hr class="mobile">
@@ -26,7 +43,22 @@
         </div>
     </a>
     <div class="d-flex justify-content-end gap-2 w-100 desktop" style="max-width: 320px;">
-        <a href="/login" class="btn btn-sm btn-outline-secondary">Iniciar Sesión</a>
-        <a href="/signup" class="btn btn-sm btn-outline-primary">Registrarse</a>
+        @if (auth.user()) {
+            <div class="dropdown">
+                <button class="btn btn-outline-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-fill me-2"></i>
+                    Mi Perfil
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item disabled text-white">{{auth.username()}}</a></li>
+                    <li><a class="dropdown-item disabled text-white">{{auth.userEmail()}}</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><button class="dropdown-item text-danger" (click)="auth.logout()">Cerrar Sesión</button></li>
+                </ul>
+            </div>
+        } @else {
+            <a href="/login" class="btn btn-sm btn-outline-secondary">Iniciar Sesión</a>
+            <a href="/signup" class="btn btn-sm btn-outline-primary">Registrarse</a>
+        }
     </div>
 </div>
