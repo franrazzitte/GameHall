@@ -83,17 +83,11 @@ export class Ahorcado {
     this.showGameOption.set(false);
     this.lifes.set(7);
     this.showInstruccions.set(true);
+    this.time.set(0);
+    this.finalTime.set(0);
   }
   goToMenu() {
-    this.word = [];
-    this.usedLetters = [];
-    this.letterCondition.clear();
-    this.titleGameOptions.set('');
-    this.btn1GameOptions.set('');
-    this.btn2GameOptions.set('');
-    this.lifes.set(7);
-    this.showInstruccions.set(true);
-    this.showGameOption.set(false);
+    this.replay();
     this.showKeyboard.set(true);
     this.showMenu.set(true);
   }
@@ -166,9 +160,11 @@ export class Ahorcado {
         }
         if (this.word.every(letter => this.usedLetters.includes(letter))) {
           this.isPlaying.set(false);
+          this.finalTime.set(this.time())
           this.showGameOption.set(true);
           this.titleGameOptions.set('¡Ganaste!');
           this.letterCondition.set('all', 'inactive');
+          clearInterval(this.idTime);
           this.sendToDB(true);
         }
       }
