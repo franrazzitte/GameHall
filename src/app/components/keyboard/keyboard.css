@@ -1,5 +1,7 @@
 .letter {width: 45px;height: 55px;background-color: white;color: black;}
 
+.letter:hover {background-color: #ababab;}
+
 .letter:active {background-color: #ababab;}
 .letter.inactive {background-color: white;}
 .letter.disabled {background-color: #7e7e7e;}

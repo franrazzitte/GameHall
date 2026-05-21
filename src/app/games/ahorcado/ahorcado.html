@@ -1,18 +1,51 @@
 <div class="responsive-element desktop pb-5"></div>
-<div class="row align-items-end justify-content-center p-2">
-    <div class="col-lg-4">
-        <img [src]="'img/ahorcado/hangman-'+lifes+'.png'" class="w-100" alt="0">
-    </div>
-    <div class="col-lg-7">
-        <div class="d-flex justify-content-center align-items-end mb-3 mt-5" style="min-height: 55px;">
-            @for (letter of word; track letter) {
-                <div class="letter me-2">
-                    <h1 class="m-0">
-                        @if (!isPlaying || usedLetters.includes(letter)) {{{ letter }}} 
-                    </h1>
+<div class="p-2 pt-4 pb-4 background-img">
+    @if (showMenu()) {
+        <div class="row justify-content-center align-items-center pt-5 m-0 text-center">
+            <div class="col-lg-6">
+                <img src="/img/ahorcado/logo.png" class="w-100 p-5 logo-menu" alt="Logo Ahorcado">
+            </div>
+            <div class="col-lg-5">
+                <div class="d-flex flex-column gap-2 pe-3 ps-3">
+                    <button type="button" class="btn btn-menu" (click)="singleplayerMode()">Un solo jugador</button>
+                    <button type="button" class="btn btn-menu" (click)="multiplayerMode()">Multijugador</button>
+                    <button type="button" class="btn btn-menu" (click)="quit()">Salir</button>
                 </div>
-            }
+            </div>
+        </div>    
+    } @else {
+        <div class="row align-items-end justify-content-center m-0">
+            <div class="col-lg-4 d-flex flex-column justify-content-center">
+                @if (showInstruccions()) {
+                    <h2 class="m-0">¿Cómo jugar?</h2>
+                    <hr>
+                    <p class="pb-5">{{ textInstruccions() }}</p>
+                    <button type="button" class="btn btn-menu" (click)="goToMenu()">Volver</button>
+                } @else {
+                    <img [src]="'img/ahorcado/hangman-'+lifes()+'.png'" class="w-100" alt="hangman">
+                }
+            </div>
+            <div class="col-lg-7 d-flex flex-column justify-content-end text-center" style="min-height: 270px;">
+                @if (showGameOption()) {
+                    <h2>{{ titleGameOptions() }}</h2>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="btn btn-menu" (click)="option1()">{{btn1GameOptions()}}</button>
+                        <button type="button" class="btn btn-menu" (click)="option2()">{{btn2GameOptions()}}</button>
+                    </div>    
+                }
+                <div class="d-flex justify-content-center align-items-end gap-2 mb-3 mt-4" style="min-height: 55px;">
+                    @for (letter of word; track letter) {
+                        <div class="letter">
+                            <h1 class="m-0">
+                                @if (!isPlaying() || usedLetters.includes(letter)) {{{ letter }}} 
+                            </h1>
+                        </div>
+                    }
+                </div>
+                @if (showKeyboard()) {
+                    <app-keyboard [letterCondition]="letterCondition" (letterPressed)="onLetterPressed($event)"></app-keyboard>    
+                }
+            </div>    
         </div>
-        <app-keyboard [letterCondition]="letterCondition" (letterPressed)="onLetterPressed($event)"></app-keyboard>
-    </div>
+    }
 </div>
