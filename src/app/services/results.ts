@@ -10,7 +10,7 @@ export class Results {
 
   constructor(public auth: AuthService) {}
   
-  async saveResultGame(game: string, won: boolean, info: any) {
+  async saveResultGame(game: string, won: boolean | null, info: any) {
     const client = this.supabase.getClient();
     
     const { data, error } = await client
@@ -27,7 +27,7 @@ export class Results {
       console.error(error);
       return;
     }
-    console.log(data);
+    
     return data;
   }
 }

@@ -1,1 +1,34 @@
-<p>mayor-menor works!</p>
+<div class="responsive-element desktop pb-5"></div>
+<div class="p-2 pt-4 pb-4 background-img">
+    <div class="d-flex justify-content-center gap-3 mt-3 mb-3">
+        <h3>Tu Puntaje:</h3>
+        <h3>{{ puntaje() }}</h3>
+    </div>
+    <div class="row align-items-center justify-content-center m-0">
+        <div class="col-lg-5 d-flex flex-column justify-content-center">
+            <div class="d-flex justify-content-center align-items-center gap-5">
+                <img src="img/mayor-menor/mazo.png" class="carta" width="150px" alt="mazo">
+                <img [src]="'img/mayor-menor/'+carta1()+'.png'" class="carta rounded" height="175px" alt="carta">
+            </div>
+        </div>
+        <div class="col-lg-5 d-flex flex-column justify-content-center text-center" style="min-height: 270px;">
+            <div class="d-flex justify-content-center align-items-center gap-5">
+                <img [src]="'img/mayor-menor/'+carta2()+'.png'" class="carta rounded" height="175px" alt="carta">
+                <div class="d-flex flex-column justify-content-center">
+                    <h3>¿Mayor o Menor?</h3>
+                    <div class="d-flex justify-content-center gap-3">
+                        @if (isPlaying()) {
+                            <button type="button" class="btn btn-menu" (click)="mayor()">Mayor</button>
+                            <button type="button" class="btn btn-menu" (click)="menor()">Menor</button>
+                        } @else {
+                            <button type="button" class="btn btn-menu" (click)="startGame()">
+                                @if (result()) { Reiniciar } @else { Jugar }
+                            </button>
+                        }
+                    </div>
+                    @if (result()) { <h6 class="mt-1">{{ result() }}</h6> }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

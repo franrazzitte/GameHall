@@ -12,7 +12,7 @@ import { Results } from '../../services/results';
 
 export class Ahorcado {
   private router = inject(Router);
-  private results = inject(Results)
+  private results = inject(Results);
 
   letterCondition = new Map<string, string>();
   word = new Array<string>();
