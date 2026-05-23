@@ -28,8 +28,8 @@
         <ul class="nav col-12 col-lg-auto mb-2 justify-content-start mb-md-0">
             <li><a href="/#games" class="nav-link px-2 text-white">Juegos</a></li>
             @if (auth.user()) {
-                <li><a href="/chat" class="nav-link px-2 text-white">Chat</a></li>
-                <li><a href="/chat" class="nav-link px-2 text-white">Resultados</a></li>    
+                <li><button type="button" class="nav-link px-2 text-white" (click)="chatService.toggleChat()">Chat</button></li>
+                <li><a href="/" class="nav-link px-2 text-white">Resultados</a></li>
             }
             <li><a href="/about" class="nav-link px-2 text-white">¿Quién Soy?</a></li>
         </ul>

@@ -1,86 +1,88 @@
 <div class="responsive-element desktop pb-5"></div>
-<div class="row align-items-center p-2 g-lg-5">
-    <div class="col-lg-7 text-center text-lg-start">
-        <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Crea una cuenta en Game<span class="text-primary">Hall</span></h1>
-    </div>
-    <form (ngSubmit)="onSubmit()" #signupForm="ngForm" class="col-md-10 mx-auto col-lg-5 p-5 p-md-5 border rounded-5 bg-body-tertiary">
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" placeholder="Correo electrónico"
-                [(ngModel)] = "email" name="email"
-                required email
-                #emailField = "ngModel">
-            @if (emailField.invalid && emailField.touched || errorOnSubmit().includes('registrado')){
-                <div class="text-danger small mt-1 me-1">
-                    <i class="bi bi-exclamation-octagon-fill"></i>
-                    Introduce un correo válido
-                </div>
-            }
-            <label>Correo electrónico</label>
+<div class="container">
+    <div class="row align-items-center p-2 g-lg-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Crea una cuenta en Game<span class="text-primary">Hall</span></h1>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="Nombre"
-                [(ngModel)] = "username" name="username"
-                required
-                #usernameField = "ngModel">
-            @if (usernameField.invalid && usernameField.touched){
-                <div class="text-danger small mt-1 me-1">
-                    <i class="bi bi-exclamation-octagon-fill"></i>
-                    Campo obligatorio
-                </div>
-            }
-            <label>Nombre</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="Apellido"
-                [(ngModel)] = "lastname" name="lastname"
-                required
-                #lastnameField = "ngModel">
-            @if (lastnameField.invalid && lastnameField.touched){
-                <div class="text-danger small mt-1 me-1">
-                    <i class="bi bi-exclamation-octagon-fill"></i>
-                    Campo obligatorio
-                </div>
-            }
-            <label>Apellido</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="number" class="form-control" placeholder="Edad"
-                [(ngModel)] = "age" name="age"
-                required min="18" max="100"
-                #ageField = "ngModel">
-            @if (ageField.invalid && ageField.touched){
-                <div class="text-danger small mt-1 me-1">
-                    <i class="bi bi-exclamation-octagon-fill"></i>
-                    Campo obligatorio
-                </div>
-            }
-            <label>Edad</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña"
-                [(ngModel)] = "password" name="password"
-                required minlength="6"
-                #passField = "ngModel">
-            @if (passField.invalid && passField.touched){
-                <div class="text-danger small mt-1 me-1">
-                    <i class="bi bi-exclamation-octagon-fill"></i>
-                    La contraseña debe contener un mínimo de 6 caracteres 
-                </div>
-            }
-            <label class="form-label">Contraseña</label>
-        </div>
-        <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid || loading()">
-            @if (loading()) { Cargando... } @else { Crear cuenta }
-        </button>
-        @if(errorOnSubmit()){
-            <div class="text-danger small mt-1 me-1">
-                <i class="bi bi-exclamation-octagon-fill"></i>
-                {{ errorOnSubmit() }}
+        <form (ngSubmit)="onSubmit()" #signupForm="ngForm" class="col-md-10 mx-auto col-lg-5 p-5 p-md-5 border rounded-5 bg-body-tertiary">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" placeholder="Correo electrónico"
+                    [(ngModel)] = "email" name="email"
+                    required email
+                    #emailField = "ngModel">
+                @if (emailField.invalid && emailField.touched || errorOnSubmit().includes('registrado')){
+                    <div class="text-danger small mt-1 me-1">
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+                        Introduce un correo válido
+                    </div>
+                }
+                <label>Correo electrónico</label>
             </div>
-        }
-        <hr>
-        <p>¿Ya tenés una cuenta? <a href="login">Inicia sesión aquí</a></p>
-    </form>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Nombre"
+                    [(ngModel)] = "username" name="username"
+                    required
+                    #usernameField = "ngModel">
+                @if (usernameField.invalid && usernameField.touched){
+                    <div class="text-danger small mt-1 me-1">
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+                        Campo obligatorio
+                    </div>
+                }
+                <label>Nombre</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="Apellido"
+                    [(ngModel)] = "lastname" name="lastname"
+                    required
+                    #lastnameField = "ngModel">
+                @if (lastnameField.invalid && lastnameField.touched){
+                    <div class="text-danger small mt-1 me-1">
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+                        Campo obligatorio
+                    </div>
+                }
+                <label>Apellido</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" placeholder="Edad"
+                    [(ngModel)] = "age" name="age"
+                    required min="18" max="100"
+                    #ageField = "ngModel">
+                @if (ageField.invalid && ageField.touched){
+                    <div class="text-danger small mt-1 me-1">
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+                        Campo obligatorio
+                    </div>
+                }
+                <label>Edad</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" placeholder="Contraseña"
+                    [(ngModel)] = "password" name="password"
+                    required minlength="6"
+                    #passField = "ngModel">
+                @if (passField.invalid && passField.touched){
+                    <div class="text-danger small mt-1 me-1">
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+                        La contraseña debe contener un mínimo de 6 caracteres 
+                    </div>
+                }
+                <label class="form-label">Contraseña</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid || loading()">
+                @if (loading()) { Cargando... } @else { Crear cuenta }
+            </button>
+            @if(errorOnSubmit()){
+                <div class="text-danger small mt-1 me-1">
+                    <i class="bi bi-exclamation-octagon-fill"></i>
+                    {{ errorOnSubmit() }}
+                </div>
+            }
+            <hr>
+            <p>¿Ya tenés una cuenta? <a href="login">Inicia sesión aquí</a></p>
+        </form>
+    </div>
 </div>
 <button type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#modalSignup" id="modalSignupBtn"></button>
 <div class="modal fade" id="modalSignup" tabindex="-1" aria-labelledby="modalSignupLabel" aria-hidden="true">

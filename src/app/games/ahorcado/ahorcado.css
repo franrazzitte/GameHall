@@ -1,0 +1,35 @@
+.background-img {
+    background-image: linear-gradient(135deg, #1a0f0a, #3d1e11, #6e361b);
+    background-blend-mode: overlay;
+    opacity: 0.95;
+    min-height: 430px;
+}
+
+.btn-menu {
+    background-color: #FFC66B;
+    color: black;
+    border-top-right-radius: 0% !important;
+    border-bottom-left-radius: 0% !important;
+}
+
+.btn-menu:hover {
+    background-color: #bb8734;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 50px;
+    border-width: 0;
+    border-bottom-width: 3px;
+    border-color: white;
+    border-style: solid;
+}
+
+@media screen and (max-width: 600px) {
+    .logo-menu {
+        padding: 0 !important;
+        padding-bottom: 20% !important;
+    }
+}
