@@ -18,3 +18,11 @@ export interface Game {
     image: string;
     link: string;
 }
+
+export interface Message {
+  id: number;
+  user_id: number;
+  username: string;
+  content: string;
+  created_at: string;
+}
