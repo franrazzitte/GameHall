@@ -37,9 +37,13 @@ export class MayorMenor {
     do {
       const randomIndex = Math.floor(Math.random() * this.cartas.length);
       nuevaCarta = this.cartas[randomIndex];
-    } while (nuevaCarta === carta);
+    } while (this.getNumberCard(nuevaCarta) === this.getNumberCard(carta ?? ''));
     
     return nuevaCarta;
+  }
+
+  getNumberCard(carta: string): number {
+    return Number(carta.replace('basto', '').replace('copa', '').replace('espada', '').replace('oro', ''));
   }
 
   mayor() {
@@ -60,12 +64,12 @@ export class MayorMenor {
     
     this.carta2.set(nuevaCarta);
 
-    const indiceCarta1 = this.cartas.indexOf(cartaActual);
-    const indiceCarta2 = this.cartas.indexOf(nuevaCarta);
+    const numeroCarta1 = this.getNumberCard(cartaActual);
+    const numeroCarta2 = this.getNumberCard(nuevaCarta);
 
     let correct = false;
-    if (type === 'mayor') correct = indiceCarta2 > indiceCarta1;
-    if (type === 'menor') correct = indiceCarta2 < indiceCarta1;
+    if (type === 'mayor') correct = numeroCarta2 > numeroCarta1;
+    if (type === 'menor') correct = numeroCarta2 < numeroCarta1;
 
     if (correct) this.result.set('¡Correcto! +1 punto');
     else {
@@ -83,6 +87,6 @@ export class MayorMenor {
         this.isPlaying.set(false);
       }
       this.isProcessing.set(false);
-    }, 1000);
+    }, 1500);
   }
 }
