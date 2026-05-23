@@ -50,6 +50,7 @@ export class ChatService {
           table: 'chat'
         },
         () => {
+          console.log('Nuevo mensaje recibido, actualizando chat...');
           this.getMessages();
         }
       )

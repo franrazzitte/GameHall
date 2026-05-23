@@ -1,52 +1,50 @@
-<div class="position-fixed bottom-0 end-0 mb-5 me-5 bd-mode-toggle">
-    <button type="button" class="btn btn-primary rounded-circle p-3 lh-1" (click)="chatService.toggleChat()"><i class="bi bi-chat-fill"></i></button>
-</div>
-@if (chatService.isChatOpen()) {
-    <div class="border chat">
-        <div class="chat-content">
-            <div class="chat-body">
-                <div class="p-2 d-flex align-items-center bg-black">
-                    <button type="button" class="btn lh-1" (click)="chatService.toggleChat()"><i class="bi bi-arrow-left"></i></button>
-                    <img src="/logo.png" class="rounded-circle me-2" height="50px" width="50px">
-                    <div class="align-items-center">
-                        <h5 style="margin: 0%;">Chat Global</h5>
-                        <small style="margin: 0%; color: white;">¡Habla con otros jugadores!</small>
+@if (auth.isAuthenticated()) {
+    <div class="position-fixed bottom-0 end-0 mb-5 me-5 bd-mode-toggle">
+        <button type="button" class="btn btn-primary rounded-circle p-3 lh-1" (click)="chatService.toggleChat()"><i class="bi bi-chat-fill"></i></button>
+    </div>
+    @if (chatService.isChatOpen()) {
+        <div class="border chat">
+            <div class="chat-content">
+                <div class="chat-body">
+                    <div class="p-2 d-flex align-items-center bg-black">
+                        <button type="button" class="btn lh-1" (click)="chatService.toggleChat()"><i class="bi bi-arrow-left"></i></button>
+                        <img src="/logo.png" class="rounded-circle me-2" height="50px" width="50px">
+                        <div class="align-items-center">
+                            <h5 style="margin: 0%;">Chat Global</h5>
+                            <small style="margin: 0%; color: white;">¡Habla con otros jugadores!</small>
+                        </div>
                     </div>
-                </div>
-                <div class="chat-container">
-                    @for (msg of chatService.message(); track msg.id) {
-                        @if (auth.user()?.id === msg?.user_id) {
-                            <div class="d-flex justify-content-end align-items-center">
-                                <small class="text-secondary me-1 ms-1" style="font-size: 10px;">{{ formatTime(msg.created_at) }}</small>
-                                <div class="rounded-2 p-1 ps-3 pe-2 msg-transmitter bg-primary">
-                                    <span>{{ msg.content }}</span>
-                                </div>
-                            </div>
-                        } @else {
-                            <div>
-                                <small class="text-secondary mt-1" style="font-size: 10px;">{{ msg.username }}</small>
-                                <div class="d-flex justify-content-start align-items-center">
-                                    <div class="d-flex flex-column rounded-2 p-1 pe-4 ps-2 msg-receiver bg-secondary">
+                    <div class="chat-container">
+                        @for (msg of chatService.message(); track msg.id) {
+                            @if (auth.user()?.id === msg?.user_id) {
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <small class="text-secondary me-1 ms-1" style="font-size: 10px;">{{ formatTime(msg.created_at) }}</small>
+                                    <div class="rounded-2 p-1 ps-3 pe-2 msg-transmitter bg-primary">
                                         <span>{{ msg.content }}</span>
                                     </div>
-                                    <small class="text-secondary me-1 ms-1" style="font-size: 10px;">{{ formatTime(msg.created_at) }}</small>
-                                </div>    
-                            </div>
+                                </div>
+                            } @else {
+                                <div>
+                                    <small class="text-secondary mt-1" style="font-size: 10px;">{{ msg.username }}</small>
+                                    <div class="d-flex justify-content-start align-items-center">
+                                        <div class="d-flex flex-column rounded-2 p-1 pe-4 ps-2 msg-receiver bg-secondary">
+                                            <span>{{ msg.content }}</span>
+                                        </div>
+                                        <small class="text-secondary me-1 ms-1" style="font-size: 10px;">{{ formatTime(msg.created_at) }}</small>
+                                    </div>    
+                                </div>
+                            }
                         }
-                    }
-                </div>
-                @if (auth.isAuthenticated()) {
+                    </div>
                     @if (loading()) { <small class="text-end text-secondary bg-black pe-3 pt-1">Enviando...</small> }
                     <div class="bg-black">
                         <div class="d-flex align-items-center">
                             <input class="form-control m-2 border-0 bg-transparent" style="box-shadow: none;" [(ngModel)]="newMessage" (keyup.enter)="send()" placeholder="Escribí tu mensaje...">
                             <button class="btn m-2 p-2 lh-1 bg-primary" (click)="send()" [disabled]="!newMessage.trim() || loading()"><i class="bi bi-send-fill"></i></button>
                         </div>
-                    </div>    
-                } @else {
-                    <small class="text-center text-secondary bg-black">Inicia sesión para usar el chat</small>
-                }
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    }
 }
