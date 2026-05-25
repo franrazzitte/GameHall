@@ -4,7 +4,10 @@
 
 .letter:active {background-color: #ababab;}
 .letter.inactive {background-color: white;}
-.letter.disabled {background-color: #7e7e7e;}
+.letter.disabled, .letter.gray {background-color: #7e7e7e;}
+
+.letter.green {background-color: green; color: white;}
+.letter.yellow {background-color: yellow;}
 
 @media screen and (max-width: 600px) {
     .letter {width: 35px;height: 45px;}

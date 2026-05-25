@@ -26,3 +26,9 @@ export interface Message {
   content: string;
   created_at: string;
 }
+
+export interface PreguntadosQuestions {
+  question: string;
+  correctAnswer: string;
+  answers: string[];
+}

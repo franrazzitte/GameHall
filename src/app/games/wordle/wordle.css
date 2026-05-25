@@ -1,0 +1,12 @@
+.background-img {
+    background-image: linear-gradient(135deg, #01dfdf, #02dbdb, #00bdbd);
+    background-blend-mode: overlay;
+    opacity: 0.95;
+    min-height: 430px;
+}
+
+.letter {background-color: white; color: black; width: 55px; height: 55px;}
+
+.letter-correct {background-color: green; color: white;}
+.letter-present {background-color: yellow; color: black;}
+.letter-incorrect {background-color: gray; color: white;}

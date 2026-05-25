@@ -7,6 +7,8 @@ import { authGuard } from './guards/auth';
 import { clientGuard } from './guards/client';
 import { Ahorcado } from './games/ahorcado/ahorcado';
 import { MayorMenor } from './games/mayor-menor/mayor-menor';
+import { Preguntados } from './games/preguntados/preguntados';
+import { Wordle } from './games/wordle/wordle';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'about', component: About },
   { path: 'games/ahorcado', component: Ahorcado, canActivate: [authGuard] },
   { path: 'games/mayor_o_menor', component: MayorMenor, canActivate: [authGuard] },
+  { path: 'games/preguntados', component: Preguntados, canActivate: [authGuard] },
+  { path: 'games/wordle', component: Wordle, canActivate: [authGuard] },
   { path: '**', redirectTo: '' }
 ];

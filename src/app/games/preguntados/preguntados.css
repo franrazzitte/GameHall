@@ -1,0 +1,17 @@
+.background-img {
+    background-image: linear-gradient(135deg, #260029, #3f0040, #47004f);
+    background-blend-mode: overlay;
+    opacity: 0.95;
+    min-height: 430px;
+}
+
+.btn-menu {
+    background-color: #ff75ff;
+    color: black;
+}
+
+.btn-menu-secondary {background-color: #9d3b9d;}
+
+@media screen and (max-width: 600px) {
+    .opt {flex-direction: column;}
+}

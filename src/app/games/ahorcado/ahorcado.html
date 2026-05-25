@@ -16,10 +16,10 @@
     } @else {
         <div class="row align-items-end justify-content-center m-0">
             <div class="col-lg-4 d-flex flex-column justify-content-center">
-                @if (showInstruccions()) {
+                @if (showInstructions()) {
                     <h2 class="m-0">¿Cómo jugar?</h2>
                     <hr>
-                    <p class="pb-5">{{ textInstruccions() }}</p>
+                    <p class="pb-5">{{ textInstructions() }}</p>
                     <button type="button" class="btn btn-menu" (click)="goToMenu()">Volver</button>
                 } @else {
                     <img [src]="'img/ahorcado/hangman-'+lifes()+'.png'" class="w-100" alt="hangman">

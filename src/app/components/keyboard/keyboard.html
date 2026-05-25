@@ -3,7 +3,7 @@
         @for (letter of row; track letter) {
             <button
                 [class]="'d-flex align-items-center justify-content-center rounded border-0 lh-1 letter ' + (letterCondition.get(letter) || '') +' '+ (letterCondition.get('all') || '')"
-                [disabled]="letterCondition.has(letter) || letterCondition.get('all')"
+                [disabled]="letterCondition.get(letter) === 'disabled' || letterCondition.get('all')"
                 (click)="press(letter)">
                 @if (letter.includes('bi')) {
                     <i class="fs-4 bi {{ letter }}"></i>

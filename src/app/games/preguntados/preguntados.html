@@ -1,0 +1,61 @@
+<div class="responsive-element desktop pb-5"></div>
+<div class="p-2 pt-4 pb-4 background-img">
+    @if (showMenu()) {
+        <div class="responsive-element desktop pb-5"></div>
+        <div class="row justify-content-center align-items-center m-0 text-center">
+            <div class="col-lg-6">
+                <img src="/img/preguntados/logo.png" width="300px" alt="Logo Preguntados">
+            </div>
+            <div class="col-lg-5">
+                <div class="d-flex flex-column gap-2 pe-3 ps-3 mt-5 mb-5">
+                    <h1 class="fw-bold">Preguntados</h1>
+                    <button type="button" class="btn btn-menu" (click)="startGame()">Jugar</button>
+                    <button type="button" class="btn btn-menu" (click)="quit()">Salir</button>
+                </div>
+            </div>
+        </div>    
+    } @else {
+        <div class="row align-items-end justify-content-center m-0">
+            @if(isLoading()) {
+                <div class="d-flex flex-column justify-content-center align-items-center pt-5">
+                    <div class="spinner-border" role="status"></div>
+                    <p class="mt-3">Cargando preguntas...</p>
+                </div>
+            }
+            @if(!isLoading() && actualQuestion() && !gameFinished()) {
+                <div class="p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>{{ questionIndex() + 1 }} / {{ questions().length }}</h5>
+                        <h5>Puntaje: {{ score() }}</h5>
+                    </div>
+                    <div class="responsive-element desktop pb-5"></div>
+                    <h3 class="card border-0 p-3 mb-4 text-black" style="background-color: rgb(203, 147, 255);">{{ actualQuestion().question }}</h3>
+                    <div class="d-flex gap-3 opt">
+                        @for(opt of actualQuestion().answers; track opt) {
+                            <button
+                                class="btn border-0 w-100"
+                                [class.btn-menu]="!selectedAnswer()"
+                                [class.btn-success]="selectedAnswer() !== '' && opt === actualQuestion().correctAnswer"
+                                [class.btn-danger]="selectedAnswer() !== '' && selectedAnswer() === opt && opt !== actualQuestion().correctAnswer"
+                                [class.btn-menu-secondary]="selectedAnswer() !== '' && opt !== actualQuestion().correctAnswer && selectedAnswer() !== opt"
+                                (click)="selectAnswer(opt)"
+                                [disabled]="selectedAnswer() !== ''">
+                                {{ decodeText(opt) }}
+                            </button>
+                        }
+                    </div>
+                </div>
+            }
+            @if(gameFinished()) {
+                <div class="text-center border-0 p-3 mb-4">
+                    <h1>Juego terminado</h1>
+                    <hr>
+                    <h2>Puntaje final: {{ score() }}</h2>
+                    <button class="btn btn-menu mt-3" (click)="startGame()">
+                        Jugar otra vez
+                    </button>
+                </div>
+            }
+        </div>
+    }
+</div>
