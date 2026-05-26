@@ -27,3 +27,4 @@ Se debe realizar la aplicación “Sala de juegos”. La aplicación debe permit
 * **Sprint 1**: _Quién Soy_ UI + GitHub API; _Login_ + UI básica; _Sign Up_ + UI básica; _Home_ vacío; _Header_ + UI
 * **Sprint 2**: _Guards_; _Autenticación_ con _Supabase_; _Assets_; _Models_; _Home_ + UI avanzada; _Login_ + UI actualizada; _Sign Up_ + UI actualizada; _Footer_ + UI básica
 * **Sprint 3**: _Ahorcado_ UI + lógica; _Mayor o Menor_ UI + lógica; _Sala de Chat_ UI + lógica;  _Results_ Service; _Chat_ Service
+* **Sprint 4**: _Preguntados_ UI + lógica; _Wordle_ UI + lógica; _Resultados_ Service + UI + lógica

@@ -1,0 +1,53 @@
+<div class="responsive-element desktop pb-5"></div>
+<div class="container">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">TOP 10</h1>
+    </div>
+    <div class="row g-4">
+        @for (juego of tableGames; track juego.title) {
+            <div class="col-12 col-lg-6">
+                <div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h5 class="card-title mb-0 fw-semibold">{{ juego.title }}</h5>
+                    </div>
+                    <div class="card-body p-0 bg-white">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped align-middle mb-0">
+                                <thead class="table-light text-uppercase fs-7 text-muted">
+                                    <tr>
+                                        <th scope="col" class="text-center" style="width: 15%">pos</th>
+                                        <th scope="col">jugador</th>
+                                        <th scope="col" class="w-100 px-4 text-end">{{ juego.scoreTitle }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (result of juego.data(); track result.id; let i = $index) {
+                                        @if (result.data.score > 0) {
+                                            <tr>
+                                                <td class="text-center fw-bold bg-white text-dark">
+                                                    @if (i === 9) {
+                                                        <small class="m-0 bg-black text-white ms-2 me-2 p-1 lh-1 rounded-circle" style="font-size: 9px;">10</small>
+                                                    } @else {
+                                                        <i [class]="'bi bi-'+(i+1)+'-circle-fill'"></i>
+                                                    }
+                                                </td>
+                                                <td class="fw-bold bg-white text-dark">
+                                                    {{ result.username }}
+                                                </td>
+                                                <td class="text-end bg-white px-4">
+                                                    <span class="badge bg-success text-white rounded-pill px-3 py-2 fw-bold">
+                                                        {{ result.data.score }}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

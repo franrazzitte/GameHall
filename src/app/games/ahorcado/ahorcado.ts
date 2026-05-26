@@ -128,6 +128,7 @@ export class Ahorcado {
     await this.results.saveResultGame('Ahorcado', won, {
       time: this.finalTime(),
       usedLetters: this.usedLetters,
+      score: this.usedLetters.length,
       word: this.word,
       lifes: this.lifes(),
       mode: this.mode()
