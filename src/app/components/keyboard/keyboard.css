@@ -1,13 +1,15 @@
 .letter {width: 45px;height: 55px;background-color: white;color: black;}
 
-.letter:hover {background-color: #ababab;}
-
 .letter:active {background-color: #ababab;}
 .letter.inactive {background-color: white;}
 .letter.disabled, .letter.gray {background-color: #7e7e7e;}
 
 .letter.green {background-color: green; color: white;}
-.letter.yellow {background-color: yellow;}
+.letter.yellow {background-color: #e9d900;}
+
+@media screen and (min-width: 600px) {
+    .letter:hover {background-color: #ababab;}
+}
 
 @media screen and (max-width: 600px) {
     .letter {width: 35px;height: 45px;}

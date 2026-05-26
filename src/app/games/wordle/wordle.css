@@ -5,8 +5,10 @@
     min-height: 430px;
 }
 
+.btn-menu {background-color: white; color: black; border: 0; min-width: 200px;}
+
 .letter {background-color: white; color: black; width: 55px; height: 55px;}
 
 .letter-correct {background-color: green; color: white;}
-.letter-present {background-color: yellow; color: black;}
+.letter-present {background-color: #e9d900; color: black;}
 .letter-incorrect {background-color: gray; color: white;}

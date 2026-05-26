@@ -2,70 +2,118 @@
 <div class="p-2 pt-4 pb-4 background-img">
     <h1 class="text-dark text-center mb-4">Wordle</h1>
     <div class="row justify-content-center align-items-center m-0 text-center">
-        <div class="col-lg-3 text-start text-dark mb-5">
-            <h3>¿Cómo jugar?</h3>
-            <hr>
-            <small class="text-secondary">Tenés 6 intentos para adivinar la palabra escondida. Luego de cada intento, el color de las letras cambiará para mostrarte qué tan cerca estás de acertar.</small>
-            <div class="d-flex justify-content-center gap-1 mt-2">
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">R</h1>
-                <h1 class="card d-flex letter letter-correct justify-content-center align-items-center rounded-1 p-1 m-0">B</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">O</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">L</h1>
+        @if (showMenu()) {
+            <div class="col-lg-3 text-start text-dark mb-5">
+                <h3>¿Cómo jugar?</h3>
+                <hr>
+                <small>Tenés 6 intentos para adivinar la palabra escondida. Luego de cada intento, el color de las letras cambiará para mostrarte qué tan cerca estás de acertar.</small>
+                <p class="mt-2 mb-1">Ejemplos</p>
+                <hr class="mt-0">
+                <div class="d-flex justify-content-center gap-1 mt-2">
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">R</h1>
+                    <h1 class="card d-flex letter letter-correct justify-content-center align-items-center rounded-1 p-1 m-0">B</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">O</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">L</h1>
+                </div>
+                <small>La palabra escondida tiene la letra B y está en la posición correcta.</small>
+                <div class="d-flex justify-content-center gap-1 mt-2">
+                    <h1 class="card d-flex letter letter-present justify-content-center align-items-center rounded-1 p-1 m-0">G</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">N</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">R</h1>
+                </div>
+                <small>La palabra escondida tiene la letra G pero no está en la posición correcta.</small>
+                <div class="d-flex justify-content-center gap-1 mt-2">
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">J</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">U</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">G</h1>
+                    <h1 class="card d-flex letter letter-incorrect justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
+                    <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">R</h1>
+                </div>
+                <small>La palabra escondida no tiene la letra A.</small>
+                <hr class="responsive-element mobile">
             </div>
-            <small class="text-secondary">La palabra escondida tiene la letra B y está en la posición correcta.</small>
-            <div class="d-flex justify-content-center gap-1 mt-2">
-                <h1 class="card d-flex letter letter-present justify-content-center align-items-center rounded-1 p-1 m-0">G</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">N</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">R</h1>
+            <div class="col-lg-7 text-center text-dark mb-5">
+                <div class="d-flex justify-content-center gap-1 mb-4">
+                    <h1 class="card d-flex letter letter-correct justify-content-center align-items-center rounded-1 p-1 m-0">W</h1>
+                    <h1 class="card d-flex letter letter-correct justify-content-center align-items-center rounded-1 p-1 m-0">O</h1>
+                    <h1 class="card d-flex letter letter-correct justify-content-center align-items-center rounded-1 p-1 m-0">R</h1>
+                    <h1 class="card d-flex letter letter-correct justify-content-center align-items-center rounded-1 p-1 m-0">D</h1>
+                    <h1 class="card d-flex letter letter-present justify-content-center align-items-center rounded-1 p-1 m-0">L</h1>
+                    <h1 class="card d-flex letter letter-present justify-content-center align-items-center rounded-1 p-1 m-0">E</h1>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2">
+                    <button type="button" class="btn btn-menu" (click)="startGame()">Jugar</button>
+                    <button type="button" class="btn btn-menu" (click)="quit()">Salir</button>
+                </div>
             </div>
-            <small class="text-secondary">La palabra escondida tiene la letra G pero no está en la posición correcta.</small>
-            <div class="d-flex justify-content-center gap-1 mt-2">
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">J</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">U</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">G</h1>
-                <h1 class="card d-flex letter letter-incorrect justify-content-center align-items-center rounded-1 p-1 m-0">A</h1>
-                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">R</h1>
+        } @else {
+            <div class="col-lg-7">
+                <div class="d-flex flex-column justify-content-center align-items-center gap-1 mb-3">
+                    @for(attempt of attempts(); track $index) {
+                        <div class="d-flex gap-1">
+                            @for(letter of attempt.word; track $index; let i = $index) {
+                                <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"
+                                    [class.letter-correct]="attempt.states[i] === 'correct'"
+                                    [class.letter-present]="attempt.states[i] === 'present'"
+                                    [class.letter-incorrect]=" attempt.states[i] === 'incorrect'">
+                                    {{ letter }}
+                                </h1>
+                            }
+                        </div>
+                    }
+                    @if (!gameOver()) {
+                        <div class="d-flex gap-1">
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[0]}}</h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[1]}}</h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[2]}}</h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[3]}}</h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[4]}}</h1>
+                        </div>
+                    }
+                    @for (life of lifesArray; track life) {
+                        <div class="d-flex gap-1">
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
+                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
+                        </div>
+                    }
+                </div>
+                <app-keyboard [letterCondition]="letterCondition" (letterPressed)="onLetterPressed($event)"></app-keyboard>
             </div>
-            <small class="text-secondary">La palabra escondida no tiene la letra A.</small>
-        </div>
-        <div class="col-lg-7">
-            <div class="d-flex flex-column justify-content-center align-items-center gap-1">
-                @for(attempt of attempts(); track $index) {
-                    <div class="d-flex gap-1">
-                        @for(letter of attempt.word; track $index; let i = $index) {
-                            <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"
-                                [class.letter-correct]="attempt.states[i] === 'correct'"
-                                [class.letter-present]="attempt.states[i] === 'present'"
-                                [class.letter-incorrect]=" attempt.states[i] === 'incorrect'">
-                                {{ letter }}
-                            </h1>
-                        }
-                    </div>
+        }
+    </div>
+</div>
+<button type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#modalWordle" id="modalWordleBtn"></button>
+<div class="modal fade" id="modalWordle" tabindex="-1" aria-labelledby="modalWordleLabel" aria-hidden="true">
+    <div class="modal-dialog text-dark">
+        <div class="modal-content bg-white">
+            <div class="modal-header justify-content-between">
+                <h5 class="modal-title text-center text-dark">{{ messageTitle() }}</h5>
+                <button type="button" class="btn text-dark" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <div class="modal-body d-flex flex-column justify-content-center align-items-center text-center text-dark">
+                <p class="text-secondary m-0">LA PALABRA ERA</p>
+                <p class="fw-bold m-0">{{ message() }}</p>
+                @if (lifes() === 5) {
+                    <p class="text-secondary m-0 mt-1">Obtuviste <span class="fw-bold">6</span> puntos más un bono <span class="fw-bold text-success">x3</span>.</p>
+                    <p class="text-secondary m-0">Puntaje final: <span class="fw-bold">18</span> puntos.</p>
+                } @else if (lifes() === 4) {
+                    <p class="text-secondary m-0 mt-1">Obtuviste <span class="fw-bold">5</span> puntos más un bono <span class="fw-bold text-success">x2</span>.</p>
+                    <p class="text-secondary m-0">Puntaje final: <span class="fw-bold">10</span> puntos.</p>
+                } @else if (lifes() >= 0) {
+                    <p class="text-secondary m-0 mt-1">Obtuviste un total de <span class="fw-bold">{{ (lifes()+1) }}</span> puntos.</p>
                 }
-                @if (!gameOver()) {
-                    <div class="d-flex gap-1">
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[0]}}</h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[1]}}</h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[2]}}</h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[3]}}</h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0">{{currentWord()[4]}}</h1>
-                    </div>
-                }
-                @for (life of lifesArray; track life) {
-                    <div class="d-flex gap-1">
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
-                        <h1 class="card d-flex letter justify-content-center align-items-center rounded-1 p-1 m-0"></h1>
-                    </div>
-                }
+                <p class="text-secondary m-0 mt-3">Presiona <span class="fw-bold">Jugar de nuevo</span> para iniciar una nueva partida, o simplemente presiona cualquier tecla del teclado.</p>
             </div>
-            <p class="text-center">{{ message() }}</p>
-            <app-keyboard [letterCondition]="letterCondition" (letterPressed)="onLetterPressed($event)"></app-keyboard>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" (click)="startGame()">Jugar de nuevo</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>
