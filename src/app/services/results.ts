@@ -30,4 +30,16 @@ export class Results {
     
     return data;
   }
+
+  async getResults(game: string) {
+    const client = this.supabase.getClient();
+    const { data, error } = await client.from('results').select('*').eq('game', game);
+
+    if (error) {
+      console.error(error);
+      return [];
+    }
+
+    return data;
+  }
 }

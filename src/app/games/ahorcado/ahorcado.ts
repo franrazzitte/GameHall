@@ -25,8 +25,8 @@ export class Ahorcado {
   showMenu = signal(true);
   lifes = signal(7);
   mode = signal('');
-  showInstruccions = signal(false);
-  textInstruccions = signal('');
+  showInstructions = signal(false);
+  textInstructions = signal('');
   showGameOption = signal(false);
   titleGameOptions = signal('');
   btn1GameOptions = signal('');
@@ -40,8 +40,8 @@ export class Ahorcado {
   // Menu options
   singleplayerMode() {
     this.mode.set('singleplayer');
-    this.textInstruccions.set('Elegiremos una palabra al azar para que puedas adivinar. Selecciona una de las dos dificultades para comenzar el juego.');
-    this.showInstruccions.set(true);
+    this.textInstructions.set('Elegiremos una palabra al azar para que puedas adivinar. Selecciona una de las dos dificultades para comenzar el juego.');
+    this.showInstructions.set(true);
     this.titleGameOptions.set('Dificultad');
     this.btn1GameOptions.set('Fácil');
     this.btn2GameOptions.set('Difícil');
@@ -51,8 +51,8 @@ export class Ahorcado {
   }
   multiplayerMode() {
     this.mode.set('multiplayer');
-    this.textInstruccions.set('Escribe la palabra que quieras que adivine tu amigo, luego presiona el botón ✓ para que empiece el juego.');
-    this.showInstruccions.set(true);
+    this.textInstructions.set('Escribe la palabra que quieras que adivine tu amigo, luego presiona el botón ✓ para que empiece el juego.');
+    this.showInstructions.set(true);
     this.showMenu.set(false);
   }
   quit() {
@@ -64,7 +64,7 @@ export class Ahorcado {
     this.letterCondition.set('bi-check2', 'd-none');
     this.letterCondition.set('bi-backspace-fill', 'd-none');
     this.showKeyboard.set(true);
-    this.showInstruccions.set(false);
+    this.showInstructions.set(false);
     this.showGameOption.set(false);
     this.btn1GameOptions.set('Reiniciar');
     this.btn2GameOptions.set('Volver');
@@ -82,7 +82,7 @@ export class Ahorcado {
     this.btn2GameOptions.set('');
     this.showGameOption.set(false);
     this.lifes.set(7);
-    this.showInstruccions.set(true);
+    this.showInstructions.set(true);
     this.time.set(0);
     this.finalTime.set(0);
   }
@@ -128,6 +128,7 @@ export class Ahorcado {
     await this.results.saveResultGame('Ahorcado', won, {
       time: this.finalTime(),
       usedLetters: this.usedLetters,
+      score: this.usedLetters.length,
       word: this.word,
       lifes: this.lifes(),
       mode: this.mode()

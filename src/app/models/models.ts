@@ -1,3 +1,5 @@
+import { WritableSignal } from '@angular/core';
+
 export interface GitHubUser {
   image: string;
   name: string;
@@ -25,4 +27,16 @@ export interface Message {
   username: string;
   content: string;
   created_at: string;
+}
+
+export interface PreguntadosQuestions {
+  question: string;
+  correctAnswer: string;
+  answers: string[];
+}
+
+export interface ResultsStruc {
+  title: string;
+  scoreTitle: string;
+  data: WritableSignal<any[]>;
 }
